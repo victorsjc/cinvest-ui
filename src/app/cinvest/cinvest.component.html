@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">CINVEST's subscriptions</h4>
+          <p class="card-description">
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    FID
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Area
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let subscription of subscriptions">
+                  <!--<td class="py-1">
+                    <img src="{{ user.profile }}" alt="image" />
+                  </td>-->
+                  <td>{{ subscription.id }}</td>
+                  <td>{{ subscription.name }}</td>
+                  <td>{{ subscription.area }}</td>
+                  <td>{{ subscription.status }}</td>
+                </tr>
+                <tr>
+                    <button type="button" class="btn btn-primary" routerLink="/cinvest-subscription" routerLinkActive="active">New Subscription <i class="mdi mdi-plus"></i></button>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

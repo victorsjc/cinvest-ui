@@ -1,0 +1,121 @@
+<div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">FID</h4>
+              <p class="card-description">Informar todos os campos marcado como obrigatório e em caso de dúvidas, encaminhar mensagem para o grupo de <b>Suporte Administrativo</b></p>
+              <ngb-tabset class="tab-basic">
+                <ngb-tab title="Informações da Demanda">
+                  <ng-template ngbTabContent>
+                      <form class="forms-sample" [formGroup]="form">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Nome da Demanda</label>
+                              <input type="text" class="form-control form-control-lg" formControlName="name" id="name" placeholder="Nome da demanda">
+                            </div>
+                            <div class="form-group">
+                                <label for="classificacao">Classifica&ccedil;&atilde;o da Demanda</label>
+                                <select class="form-control" formControlName="classificacao" id="classificacao" placeholder="Informe a classificação da demanda">
+                                  <option>CVI</option>
+                                  <option>Pura Infra</option>
+                                  <option>Renovação</option>
+                                  <option>Inception</option>
+                                  <option>SaaS Departamental</option>
+                                  <option>Experimentação</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                  <label for="categoria">Categoria da Demanda</label>
+                                  <select class="form-control" formControlName="categoria" id="categoria" placeholder="Informe a categoria da demanda">
+                                    <option>Benefício</option>
+                                    <option>Risco Operacional</option>
+                                    <option>Risco Regulatório</option>
+                                  </select>
+                                </div>
+                            <div class="form-group">
+                                <label for="solicitante">Solicitante</label>
+                                <input type="text" class="form-control" formControlName="solicitante" id="solicitante" placeholder="Solicitante">
+                            </div>            
+                            <div class="form-group">
+                                <label for="comunidade">Comunidade de Entrega</label>
+                                <input type="text" class="form-control" formControlName="comunidade" id="comunidade" placeholder="Informe a comunidade demandante">
+                            </div>
+                          </form>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Entendimento da Demanda">
+                  <ng-template ngbTabContent>
+                    <form class="forms-sample" [formGroup]="form">
+                      <div class="form-group">
+                          <label for="descricao">Descri&ccedil;&atilde;o da Demanda</label>
+                          <input type="text" class="form-control form-control-lg" formControlName="descricao" id="descricao" placeholder="Descreve a demanda">
+                      </div>
+                      <div class="form-group">
+                          <label for="gerenciaCompras">Gerência de Compras</label>
+                          <select class="form-control" formControlName="gerenciaCompras" id="gerenciaCompras" placeholder="Informe a gerência de compras">
+                            <option>HW de Telecom, Links, Serviço de Comunicações (Aldjer Prado)</option>
+                            <option>Infraestrutura, SW Corporativos (Cassio Tomaz)</option>
+                            <option>Pacotes, Horas de Desenv. e SW de Negócio (Mauricio Bragato)</option>
+                            <option>Contratações em Cloud Pública, SaaS, Novas Tecnologias (Guilherme Nahat)</option>
+                          </select>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Já temos contrato com o fornecedor?</label>
+                            <div class="col-sm-4">
+                                <div class="form-radio">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input" name="membershipRadios" id="membershipRadios1" value="" checked>
+                                      Sim
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                      </form>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Informações Gerais Financeiras">
+                  <ng-template ngbTabContent>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Grade de Rateio">
+                  <ng-template ngbTabContent>
+                    <form class="forms-sample" [formGroup]="form">
+                    <div class="row">
+                    <table class="table table-bordered table-responsive-md table-striped text-center">
+                      <tr>
+                        <th class="text-center">Código da Empresa</th>
+                        <th class="text-center">Centro de Custo</th>
+                        <th class="text-center">% do Custo</th>
+                        <th class="text-center">Remove</th>
+                      </tr>
+                      <tr *ngFor="let person of personList; let id = index">
+                        <td>
+                          <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+                        </td>
+                        <td>
+                          <span contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{person.age}}</span>
+                        </td>
+                        <td>
+                          <span contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{person.companyName}}</span>
+                        </td>
+                        <td>
+                          <span class="table-remove">
+                            <button type="button" class="btn btn-primary" (click)="remove(id)"><i class="mdi mdi-delete"></i></button>
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+                    <span class="table-add float-left">
+                        <button type="button" class="btn btn-primary" (click)="add()"><i class="mdi mdi-plus-box"></i></button>
+                    </span>
+                    </div>
+                  </form>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+              <br>
+              <button type="button" (click)="onSubmit()" class="btn btn-success mr-2">Submit</button>
+              <button (click)="onCancel()" class="btn btn-light">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,113 @@
+<div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">New user account</h4>
+        <form class="form-sample" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <p class="card-description">
+            
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                  <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Name is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                  <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Username is required</div>
+                  </div>
+                </div>               
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Gender</label>
+                <div class="col-sm-9">
+                  <select class="form-control">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Date of Birth</label>
+                <div class="col-sm-9">
+                  <input class="form-control" placeholder="dd/mm/yyyy"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Area</label>
+                <div class="col-sm-9">
+                  <select class="form-control">
+                    <option>Arquitetura</option>
+                    <option>Infraestrutura</option>
+                    <option>Finan&ccedil;as</option>
+                    <option>Compras</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Community</label>
+                  <div class="col-sm-9">
+                    <select class="form-control">
+                      <option>Empr&eacute;stimos e Financiamentos</option>
+                      <option>Vendas e Franquias</option>
+                      <option>PLD</option>
+                      <option>Tecnologia</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">E-mail</label>
+                    <div class="col-sm-9">
+                      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                      </div>
+                    </div>
+                  </div>              
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-success mr-2">Submit</button>
+          <button (click)="onCancel()" class="btn btn-light">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
